@@ -11,5 +11,7 @@ import { enableTailwind } from '@remotion/tailwind';
 Config.setVideoImageFormat('jpeg');
 Config.setOverwriteOutput(true);
 Config.overrideWebpackConfig((currentConfiguration) => {
-  return enableTailwind(currentConfiguration);
+	return enableTailwind(currentConfiguration);
 });
+Config.setCrf(1);
+Config.setAudioBitrate('480K');

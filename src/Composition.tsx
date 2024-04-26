@@ -69,21 +69,27 @@ export const MyComposition = () => {
 
 	const currentLine = data?.find((lr) => {
 		/*
-Need Test
-		 if (lr.time - lyricsFadeInDuration * fps <= frame) {
-			 Fade in opacity
-			 const startingFrameOfCurrentLine = Math.floor(data[idx].time * fps);
-			 opacity = interpolate(
-			 	frame,
-			 	[
-			 		startingFrameOfCurrentLine - Math.floor(lyricsFadeInDuration * fps),
-			 		startingFrameOfCurrentLine,
-			 	],
-			 	[0, 1]
-			 );
-			 opacity = Math.min(1, (frame-startingFrameOfCurrentLine/(fps* lyricsFadeInDuration)))
+	 Need Test
+		if (
+			lr.time - lyricsFadeInDuration * fps + ((lyricsOffset * fps) / 1000) <=
+			frame
+		) {
+			// Fade in opacity
+			const startingFrameOfCurrentLine = Math.floor(data[idx].time * fps+ ((lyricsOffset * fps) / 1000));
+			opacity = interpolate(
+				frame,
+				[
+					startingFrameOfCurrentLine - Math.floor(lyricsFadeInDuration * fps),
+					startingFrameOfCurrentLine,
+				],
+				[0, 1]
+			);
+			// opacity = Math.min(
+			// 	1,
+			// 	frame - startingFrameOfCurrentLine / (fps * lyricsFadeInDuration)
+			// );
 
-			 Fade out opacity
+				 Fade out opacity
 		 	if (data[idx - 1]) {
 		 		const startingFrameOfNextLine = Math.floor(data[idx - 1].time * fps);
 		 		opacity = interpolate(
@@ -95,14 +101,15 @@ Need Test
 		 			[1, 0]
 		 			);
 		 		}
-		 }
-	 		console.log(opacity);
-
-		 return (lr.time - lyricsFadeInDuration) * fps <= frame;
-		 */
+			}
+			console.log(opacity);
+			
+			*/
+		//  return (lr.time - lyricsFadeInDuration) * fps <= frame;
 		return Math.ceil(lr.time * fps + (lyricsOffset * fps) / 1000) <= frame;
 	})?.text;
 
+	// Test more
 	// const audioData = useAudioData(staticFile('/input-files/song.mp3'));
 	// if (!audioData) {
 	// 	return null;
